@@ -1,0 +1,8 @@
+.card {
+  cursor: pointer;
+  box-shadow: 0 0px 2px #234b7d;
+  &:hover {
+    box-shadow: 0 4px 8px #234b7d;
+    transform: translateY(-2px);
+  }
+}

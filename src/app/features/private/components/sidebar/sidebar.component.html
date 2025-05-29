@@ -1,0 +1,34 @@
+<div class="sidebar-container">
+  <!-- Header del Sidebar -->
+  <div class="sidebar-header">
+    <div class="logo-container text-center">
+      <img src="assets/logoE.png" width="120" height="120" alt="" />
+      <!-- <h1>ECF-Cert</h1> -->
+    </div>
+  </div>
+
+  <!-- Lista de navegación con secciones -->
+  <nav class="sidebar-nav">
+    <div
+      *ngFor="let item of filteredSidebarMenu"
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/private' + item.route]"
+      (click)="closeSidebar()"
+    >
+      <div>
+        <i class="bi {{ item.icon }}"></i>
+        &nbsp;{{ item.name }}&nbsp;
+      </div>
+    </div>
+  </nav>
+
+  <!-- Footer del Sidebar -->
+  <div class="sidebar-footer">
+    <div class="user-info">
+      <div class="user-details">
+        <!-- <span class="user-name">Starsoft Lavanderia {{ yearActual }}</span> -->
+      </div>
+    </div>
+  </div>
+</div>

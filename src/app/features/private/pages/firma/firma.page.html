@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Firma XML</h1>
+    <span class="text-muted">Firma XML con tu certificado</span>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col">
+          <label for="">XML a Firmar</label>
+          <input
+            type="file"
+            (change)="onFileChange($event)"
+            class="form-control mb-3"
+            accept=".xml"
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col text-end">
+          <button class="btn btn-custom-blue" (click)="firmar()">
+            Firmar y Descargar XML
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,723 @@
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <h1>Prueba de Simulacion</h1>
+      </div>
+      <div class="col-3">
+        <span
+          >Progreso: 0/44
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Success striped example"
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div
+              class="progress-bar progress-bar-striped bg-success"
+              style="width: 25%"
+            ></div></div
+        ></span>
+      </div>
+    </div>
+    <span class="text-muted">Paso 4 de la certificacion de la DGII</span>
+  </div>
+</div>
+<div class="row text-end">
+  <div class="col">
+    <ng-container *ngIf="comprobantes32Mayor.length">
+      <button class="btn btn-danger" (click)="resetearDatos()">
+        <span *ngIf="loadingReset">
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Reseteando...
+        </span>
+        <span *ngIf="!loadingReset"> Resetear datos </span>
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="!comprobantes32Mayor.length">
+      <button class="btn btn-custom-blue" (click)="generarYGuardar()">
+        Cargar Datos
+      </button>
+    </ng-container>
+  </div>
+</div>
+<br />
+<div class="row mt-4">
+  <div class="col">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col">
+          <h3>Estado actual</h3>
+          <span class="text-muted"
+            >Gestione y monitoree el estado de sus simulaciones</span
+          >
+        </div>
+      </div>
+      <br />
+      <!-- <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/4 <small>Comprobantes tipo 31</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 32 >= 250Mil</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/1 <small>Comprobantes tipo 33</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 1</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 34</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 41</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 43</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 44</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 45</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 46</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/2 <small>Comprobantes tipo 47</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 2</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <h4>0/4 <small>Comprobantes tipo 32 RFCE</small></h4>
+            </div>
+            <div class="card-body p-3">
+              <div class="row d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 1 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 2 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 3 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+              <div class="row mt-2 d-flex align-items-center">
+                <div class="col">
+                  <span>Comprobante 4 de 4</span>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-custom-blue">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="row g-2">
+        <!-- Sección tipo 32 >= 250,000 -->
+        <div class="col-12 col-sm-4">
+          <div class="card h-100 mb-4" *ngIf="comprobantes32Mayor.length">
+            <div
+              class="card-header fw-bold text-white"
+              style="background-color: #2d4a79"
+            >
+              <i class="bi bi-check2-square text-white"></i>
+              Comprobantes tipo 32 >= 250,000
+            </div>
+            <div class="card-body">
+              <div
+                class="row mb-2"
+                *ngFor="let c of comprobantes32Mayor; let i = index"
+              >
+                <div class="col-12">Comprobante {{ i + 1 }}</div>
+                <div class="col text-end">
+                  <button
+                    class="btn"
+                    [ngClass]="{
+                        'btn-success': c.estatus === 'Aceptado',
+                        'btn-danger': c.estatus === 'Rechazado',
+                        'btn-primary': !c.estatus || (c.estatus !== 'Aceptado' && c.estatus !== 'Rechazado')
+                    }"
+                    [disabled]="isLoadingSend || c.estatus === 'Aceptado'"
+                    (click)="sentToDgii(c)"
+                  >
+                    <span *ngIf="isLoadingSend">
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Enviando...
+                    </span>
+                    <span *ngIf="!isLoadingSend">
+                      {{ c.estatus === 'Aceptado' ? 'Aceptado' : c.estatus ===
+                      'Rechazado' ? 'Rechazado' : 'Enviar' }}
+                    </span>
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verXmlPublicUrl(c.xmlPublicUrl)"
+                  >
+                    XML
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-primary btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verFactura(c.xmlPublicUrl)"
+                  >
+                    PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-4">
+          <div class="card h-100 mb-4" *ngIf="comprobantes32Menor.length">
+            <div
+              class="card-header fw-bold text-white"
+              style="background-color: #2d4a79"
+            >
+              <i class="bi bi-check2-square text-white"></i>Comprobantes tipo 32
+              < 250,000
+            </div>
+            <div class="card-body">
+              <div
+                class="row mb-2"
+                *ngFor="let c of comprobantes32Menor; let i = index"
+              >
+                <div class="col-12">Comprobante {{ i + 1 }}</div>
+                <div class="col text-end">
+                  <button
+                    class="btn"
+                    [ngClass]="{
+    'btn-success': c.estatus === 'Aceptado',
+    'btn-danger': c.estatus === 'Rechazado',
+    'btn-primary': !c.estatus || (c.estatus !== 'Aceptado' && c.estatus !== 'Rechazado')
+  }"
+                    [disabled]="isLoadingSend || c.estatus === 'Aceptado'"
+                    (click)="sentToDgii(c)"
+                  >
+                    <span *ngIf="isLoadingSend">
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Enviando...
+                    </span>
+                    <span *ngIf="!isLoadingSend">
+                      {{ c.estatus === 'Aceptado' ? 'Aceptado' : c.estatus ===
+                      'Rechazado' ? 'Rechazado' : 'Enviar' }}
+                    </span>
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verXmlPublicUrl(c.xmlPublicUrl)"
+                  >
+                    XML
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-primary btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verFactura(c.xmlPublicUrl)"
+                  >
+                    PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Los demás tipos (31, 33, 43...) -->
+        <div
+          class="col-12 col-sm-4"
+          *ngFor="let tipo of comprobantesAgrupados | keyvalue"
+        >
+          <div class="card h-100 mb-4">
+            <div
+              class="card-header fw-bold text-white"
+              style="background-color: #2d4a79"
+            >
+              <i class="bi bi-check2-square text-white"></i>
+              Comprobantes tipo {{ tipo.key }}
+            </div>
+            <div class="card-body">
+              <div class="row mb-2" *ngFor="let c of tipo.value; let i = index">
+                <div class="col-12">Comprobante {{ i + 1 }}</div>
+                <div class="col text-end">
+                  <button
+                    class="btn"
+                    [ngClass]="{
+                        'btn-success': c.estatus === 'Aceptado',
+                        'btn-danger': c.estatus === 'Rechazado',
+                        'btn-primary': !c.estatus || (c.estatus !== 'Aceptado' && c.estatus !== 'Rechazado')
+                    }"
+                    [disabled]="isLoadingSend || c.estatus === 'Aceptado'"
+                    (click)="sentToDgii(c)"
+                  >
+                    <span *ngIf="isLoadingSend">
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Enviando...
+                    </span>
+                    <span *ngIf="!isLoadingSend">
+                      {{ c.estatus === 'Aceptado' ? 'Aceptado' : c.estatus ===
+                      'Rechazado' ? 'Rechazado' : 'Enviar' }}
+                    </span>
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verXmlPublicUrl(c.xmlPublicUrl)"
+                  >
+                    XML
+                  </button>
+                  &nbsp;
+                  <button
+                    class="btn btn-outline-primary btn-sm"
+                    *ngIf="c.xmlPublicUrl"
+                    (click)="verFactura(c.xmlPublicUrl)"
+                  >
+                    PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal XML -->
+<div *ngIf="showXmlModal" class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">XML generado</h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="showXmlModal = false"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <pre
+          style="
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: black;
+            color: white;
+          "
+        >
+              <code [innerHTML]="xmlContent"></code>
+            </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- factura-ecf.component.html -->
+<div
+  class="modal fade"
+  id="facturaModal"
+  tabindex="-1"
+  aria-labelledby="facturaModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="facturaModalLabel">Factura Electrónica</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div
+          id="facturaPDF"
+          class="container p-4 bg-white text-dark border rounded"
+        >
+          <div class="row">
+            <div class="col text-center">
+              <h3>{{empresaNombre}}</h3>
+            </div>
+          </div>
+          <!-- ENCABEZADO -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <img [src]="empresaLogo" alt="Logo Empresa" style="height: 120px" />
+            <div class="text-end">
+              <h5 class="mb-0">
+                {{obtenerEncabezadoComprobante(tipoEcfVar,MontoTotal)}}
+              </h5>
+              <small><strong>e-CF:</strong> {{ ENCF }}</small><br />
+              <small><strong>Fecha Emisión:</strong> {{ FechaEmision }}</small
+              ><br />
+              <small
+                ><strong>Fecha Vencimiento:</strong> {{
+                FechaVencimientoSecuencia }}</small
+              ><br />
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- DATOS EMISOR Y COMPRADOR -->
+          <div class="row mb-4">
+            <div class="col">
+              <h6>Datos del Emisor</h6>
+              <p class="mb-0"><strong>RNC:</strong> {{ RNCEmisor }}</p>
+              <p class="mb-0">
+                <strong>Nombre:</strong> {{ RazonSocialEmisor }}
+              </p>
+              <p class="mb-0">
+                <strong>Dirección:</strong> {{ DireccionEmisor }}
+              </p>
+            </div>
+            <div class="col">
+              <h6>Datos del Comprador</h6>
+              <p class="mb-0"><strong>RNC:</strong> {{ RNCComprador }}</p>
+              <p class="mb-0">
+                <strong>Nombre:</strong> {{ RazonSocialComprador }}
+              </p>
+              <p class="mb-0">
+                <strong>Dirección:</strong> {{ DireccionComprador }}
+              </p>
+            </div>
+          </div>
+
+          <!-- TABLA DE PRODUCTOS -->
+          <h6>Detalle de Productos</h6>
+          <table class="table table-bordered table-sm">
+            <thead class="table-warning">
+              <tr>
+                <th>#</th>
+                <th>Descripción</th>
+                <th>Cant.</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of productos">
+                <td>{{ item.NumeroLinea }}</td>
+                <td>{{ item.NombreItem }}</td>
+                <td>{{ item.CantidadItem }}</td>
+                <td>{{ item.PrecioUnitarioItem }}</td>
+                <td>{{ item.MontoItem }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- TOTALES -->
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="">
+                <qrcode [qrdata]="qrUrl" [width]="160"></qrcode>
+                <p class="mt-2">
+                  <strong>Código de Seguridad:</strong> {{ CodigoSeguridad }}
+                </p>
+                <p>
+                  <small><strong>Fecha Firma:</strong> {{ FechaFirma }}</small>
+                </p>
+              </div>
+            </div>
+            <div class="col-6 text-end">
+              <p>
+                <strong>Subtotal Gravado:</strong> {{ subTotal | currency }}
+              </p>
+              <p><strong>Total ITBIS:</strong> {{ itbis | currency }}</p>
+              <p><strong>Monto Total:</strong> {{ MontoTotal | currency }}</p>
+            </div>
+          </div>
+
+          <!-- QR CODE -->
+        </div>
+
+        <!-- Botón para descargar PDF -->
+        <div class="text-end mt-3">
+          <button class="btn btn-primary" (click)="descargarPDF()">
+            📥 Descargar Factura PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

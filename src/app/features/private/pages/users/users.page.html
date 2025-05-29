@@ -1,0 +1,358 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Gestión de Usuarios</h1>
+    <span class="text-muted">Administre usuarios y empresas del sistema</span>
+  </div>
+  <div class="col">
+    <span class="badge bg-danger-subtle text-danger"
+      ><i class="bi bi-shield"></i>&nbsp;Sección Administrativa</span
+    >
+  </div>
+</div>
+<br />
+<div class="alert alert-primary" role="alert">
+  <h5 class="alert-heading">Acceso Restringido</h5>
+  <p>
+    Esta sección es solo para administradores. Aquí puede gestionar los usuarios
+    que tendrán acceso al sistema.
+  </p>
+</div>
+<div class="row mt-4">
+  <div class="col-12 col-sm-6 col-lg-4">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col">
+          <h3>Empresas</h3>
+        </div>
+        <div class="col text-end">
+          <button
+            class="btn btn-custom-blue-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <i class="bi bi-building"></i>&nbsp;Nueva
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="text-muted">Empresas registradas en el sistema</span>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr class="table-primary">
+                  <td style="color: #234b7d">Nombre</td>
+                  <td style="color: #234b7d">RNC</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of empresaData">
+                  <td>{{item.nombreEmpresa}}</td>
+                  <td>{{item.rnc}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-lg-8">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col">
+          <h3>Usuarios</h3>
+          <span class="text-muted">Usuarios con acceso al sistema</span>
+        </div>
+        <div class="col text-end">
+          <button
+            class="btn btn-custom-blue-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModalUsuarios"
+          >
+            <i class="bi bi-person-plus"></i>&nbsp;Nuevo usuario
+          </button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr class="table-primary">
+                  <td style="color: #234b7d">Nombre</td>
+                  <td style="color: #234b7d">Usuario</td>
+                  <td style="color: #234b7d">Rol</td>
+                  <td style="color: #234b7d">RNC Empresa</td>
+                  <td style="color: #234b7d">Estado</td>
+                  <!-- <td style="color: #234b7d">Acciones</td> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of usuariosData">
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.username}}</td>
+                  <td>
+                    <span
+                      class="badge"
+                      [ngClass]="{
+                        'bg-danger-subtle text-danger': item.role === 'Admin',
+                        'bg-info-subtle text-info': item.role === 'User',
+                        
+                      }"
+                      >{{item.role === 'Admin' ? 'Administrador' :
+                      'Usuario'}}</span
+                    >
+                  </td>
+                  <td>{{item.empresaID}}</td>
+                  <td>
+                    <span
+                      class="badge"
+                      [ngClass]="{
+                      'bg-success-subtle text-success': item.isActive === true,
+                      'bg-info-subtle text-info': item.isActive === false,
+                      
+                    }"
+                      >{{item.isActive ? 'Activo' : 'Inactivo'}}</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h4 class="modal-title fs-5" id="exampleModalLabel">
+              Crear Nueva Empresa
+            </h4>
+            <span class="text-muted"
+              >Complete el formulario para crear una nueva empresa</span
+            >
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+        <form [formGroup]="empresaForm" (ngSubmit)="guardarConfiguracion()">
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Nombre de la Empresa</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nombreEmpresa"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">RNC</label>
+              <input type="number" class="form-control" formControlName="rnc" />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Dirección</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="direccion"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Correo Electronica</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                formControlName="telefono"
+              />
+            </div>
+          </div>
+          <div class="row mt-4 text-end">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              &nbsp; &nbsp;
+              <button
+                type="submit"
+                class="btn btn-custom-blue"
+                [disabled]="isLoading"
+              >
+                <span *ngIf="!isLoading">Crear Empresa</span>
+                <span *ngIf="isLoading">
+                  <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                  ></span>
+                  Procesando...
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModalUsuarios"
+  tabindex="-1"
+  aria-labelledby="exampleModalUsuariosLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h4 class="modal-title fs-5" id="exampleModalUsuariosLabel">
+              Crear Nuevo Usuario
+            </h4>
+            <span class="text-muted"
+              >Complete el formulario para crear un nuevo usuario</span
+            >
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+        <form [formGroup]="usuariosForm" (ngSubmit)="guardarUsuario()">
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Nombre Completo</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nombre"
+              />
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Nombre de Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Rol</label>
+              <select name="" class="form-select" id="" formControlName="role">
+                <option value="Admin">Administrador</option>
+                <option value="User" selected>Usuario</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <label for="">Empresa</label>
+              <select
+                name=""
+                class="form-select"
+                id=""
+                formControlName="empresaID"
+              >
+                <option value="" disabled selected>
+                  Selecciona una empresa
+                </option>
+                <option *ngFor="let item of empresaData" [value]="item.rnc">
+                  {{item.nombreEmpresa}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mt-4 text-end">
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              &nbsp; &nbsp;
+              <button
+                type="submit"
+                class="btn btn-custom-blue"
+                [disabled]="isLoading"
+              >
+                <span *ngIf="!isLoading">Crear Usuario</span>
+                <span *ngIf="isLoading">
+                  <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                  ></span>
+                  Procesando...
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

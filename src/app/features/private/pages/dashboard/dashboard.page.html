@@ -1,0 +1,157 @@
+<div *ngIf="isLoading" class="text-center mt-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+  <p class="mt-3">Cargando información...</p>
+</div>
+
+<ng-container *ngIf="!isLoading">
+  <div class="row">
+    <div class="col">
+      <h1>Dashboard</h1>
+      <span class="text-muted"
+        >Bienvenido al sistema de certificación electrónica</span
+      >
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-12 col-sm-4 h-100">
+      <div
+        class="card py-4 px-3 h-100"
+        [routerLink]="['/private/certificaciones']"
+      >
+        <div class="row">
+          <div class="col">
+            <h4><i class="bi bi-receipt"></i> Certificaciones</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="text-muted"
+              >Gestione sus certificaciones electrónicas</span
+            >
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <h6>Aceptados</h6>
+            <h4 class="text-success">{{aceptados}}</h4>
+          </div>
+          <div class="col">
+            <h6>Pendientes</h6>
+            <h4 class="text-warning">{{pendientes}}</h4>
+          </div>
+          <div class="col">
+            <h6>Rechazados</h6>
+            <h4 class="text-danger">{{rechazados}}</h4>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 h-100">
+      <div class="card py-4 px-3" [routerLink]="['/private/settings']">
+        <div class="row">
+          <div class="col">
+            <h4><i class="bi bi-gear"></i> Configuración</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="text-muted">Configure su certificado y RNC</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p class="text-sm">
+              Configure su certificado digital, contraseña y RNC para la firma
+              electrónica de sus documentos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 h-100">
+      <div class="card py-4 px-3" [routerLink]="['/private/pos']">
+        <div class="row">
+          <div class="col">
+            <h4><i class="bi bi-basket2"></i> Mini POS</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="text-muted">Facturación de ventas</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p class="text-sm">
+              Genere comprobantes y gestione sus ventas electrónicas de manera
+              rápida y segura.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="card p-4">
+        <div class="row">
+          <div class="col">
+            <h4><i class="bi bi-receipt"></i> Estado del sistema</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="text-muted"
+              >Información sobre el estado del sistema</span
+            >
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col">
+            <h6>Conexión DGIII</h6>
+          </div>
+          <div class="col text-end">
+            <span class="badge bg-success-subtle text-success">Activa</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h6>RNC</h6>
+          </div>
+          <div class="col text-end">
+            <span
+              class="badge"
+              [ngClass]="{
+              'bg-success-subtle text-success': datasEmpresa[0].rnc  !== '',
+              'bg-danger-subtle text-danger': datasEmpresa[0].rnc  === '',
+            }"
+              >{{datasEmpresa[0].rnc ? 'Configurado' : 'No configurado'}}</span
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h6>Certificado</h6>
+          </div>
+          <div class="col text-end">
+            <span
+              class="badge"
+              [ngClass]="{
+              'bg-success-subtle text-success': datasEmpresa[0].certificadoUrl  !== '',
+              'bg-danger-subtle text-danger': datasEmpresa[0].certificadoUrl  === '',
+            }"
+              >{{datasEmpresa[0].certificadoUrl ? 'Configurado' : 'No
+              configurado'}}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

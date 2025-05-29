@@ -1,0 +1,272 @@
+<div class="row">
+  <div class="col">
+    <h1>Prueba de Datos e-CF</h1>
+    <span class="text-muted">Paso 2 de la certificacion de la DGII</span>
+  </div>
+</div>
+<div class="row text-end">
+  <div class="col">
+    <button
+      class="btn btn-custom-blue"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Cargar Excel
+    </button>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col">
+    <div class="card p-4">
+      <div class="row">
+        <div class="col">
+          <h3>Listado</h3>
+          <span class="text-muted"
+            >Gestione y monitoree el estado de sus e-CF</span
+          >
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-4">
+          <label for="">Tipo de comprobantes</label>
+          <select
+            name=""
+            id=""
+            class="form-select"
+            (change)="aplicarFiltros()"
+            [(ngModel)]="tipoSeleccionado"
+          >
+            <option value="0" selected>Todos los Tipos</option>
+            <option *ngFor="let item of TIPOS_COMPROBANTES" [value]="item.id">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-4">
+          <label for="">Estado</label>
+          <select
+            name=""
+            id=""
+            class="form-select"
+            (change)="aplicarFiltros()"
+            [(ngModel)]="estadoSeleccionado"
+          >
+            <option value="Todos" selected>Todos los Estados</option>
+            <option value="Aceptado">Aceptados</option>
+            <option value="Pendiente">Pendientes</option>
+            <option value="Enviado">Enviados</option>
+            <option value="Rechazado">Rechazados</option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-4">
+          <label for="">Buscar</label>
+          <input
+            type="text"
+            placeholder="NCF..."
+            class="form-control"
+            [(ngModel)]="textoBusqueda"
+            (input)="aplicarFiltros()"
+          />
+        </div>
+      </div>
+      <div class="row mt-2" *ngIf="isLoading">
+        <div
+          class="loading-overlay d-flex justify-content-center align-items-center"
+        >
+          <div
+            class="spinner-border text-primary"
+            role="status"
+            style="width: 3rem; height: 3rem"
+          >
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2" *ngIf="!isLoading">
+        <div class="col">
+          <div *ngIf="excelData.length" class="table-responsive">
+            <table class="table align-middle">
+              <thead class="table-primary">
+                <tr>
+                  <th style="color: #234b7d">CasoPrueba</th>
+                  <th style="color: #234b7d">Tipo</th>
+                  <th style="color: #234b7d">ENCF</th>
+                  <th style="color: #234b7d">Monto</th>
+                  <th style="color: #234b7d">RNC</th>
+                  <th style="color: #234b7d">Estado</th>
+                  <th style="color: #234b7d">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of excelData">
+                  <td>{{ row.CasoPrueba }}</td>
+                  <td>
+                    <span class="badge bg-light text-dark border"
+                      >{{ row.TipoeCF }}</span
+                    >
+                  </td>
+                  <td>{{ row.ENCF }}</td>
+
+                  <td>{{ row.MontoTotal | currency }}</td>
+                  <td>{{ row.RNCComprador }}</td>
+                  <td>
+                    <span
+                      class="badge"
+                      [ngClass]="{
+                          'bg-success-subtle text-success': row.estatus === 'Aceptado',
+                          'bg-info-subtle text-info': row.estatus === 'Enviado',
+                          'bg-danger-subtle text-danger': row.estatus === 'Rechazado',
+                          'bg-primary-subtle text-primary': row.estatus === 'Pendiente'
+                        }"
+                    >
+                      {{ row.estatus }}
+                    </span>
+                  </td>
+                  <td class="text-nowrap">
+                    <button
+                      class="btn btn-outline-primary btn-sm"
+                      (click)="sentToDgii(row)"
+                    >
+                      <span
+                        *ngIf="isLoadingSend"
+                        class="spinner-border spinner-border-sm text-primary"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      <span *ngIf="!isLoadingSend">Enviar</span>
+                    </button>
+                    <!-- &nbsp;
+                    <button
+                      class="btn btn-outline-success btn-sm"
+                      *ngIf="row.pdf"
+                    >
+                      PDF
+                    </button> -->
+                    &nbsp;
+
+                    <button
+                      class="btn btn-outline-danger btn-sm"
+                      *ngIf="row.xmlPublicUrl"
+                      (click)="verXmlPublicUrl(row.xmlPublicUrl)"
+                    >
+                      XML
+                    </button>
+                    &nbsp;
+
+                    <button
+                      class="btn btn-outline-success btn-sm"
+                      *ngIf="row.trackId"
+                      (click)="getStatusByTrackID(row.trackId, row.id)"
+                    >
+                      Estado
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Cargar Archivo Excel
+            </h1>
+            <span class="text-muted"
+              >Cargue un archivo Excel con los comprobantes a certificar</span
+            >
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <label for="">Archivo Excel</label>
+            <input
+              type="file"
+              class="form-control"
+              (change)="onFileChange($event)"
+            />
+          </div>
+        </div>
+        <div class="row mt-4 text-end">
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            &nbsp; &nbsp;
+            <button
+              type="button"
+              class="btn btn-custom-blue"
+              (click)="procesarArchivo()"
+              [disabled]="isLoading"
+            >
+              <span *ngIf="!isLoading">Cargar y Procesar</span>
+              <span *ngIf="isLoading">
+                <span
+                  class="spinner-border spinner-border-sm me-2"
+                  role="status"
+                ></span>
+                Procesando...
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal XML -->
+<div *ngIf="showXmlModal" class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">XML generado</h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="showXmlModal = false"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <pre
+          style="
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: black;
+            color: white;
+          "
+        >
+            <code [innerHTML]="xmlContent"></code>
+          </pre>
+      </div>
+    </div>
+  </div>
+</div>
