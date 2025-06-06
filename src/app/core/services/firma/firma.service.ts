@@ -10,7 +10,7 @@ export class FirmaService {
         formData.append('xml', file, file.name);
         formData.append('rnc', rnc);
 
-        return this.http.post('https://ecfrecepcion.starsoftdominicana.com/api/firmar-xml', formData, {
+        return this.http.post('https://ecfrecepcion.starsoftdominicana.com/ecf/api/firmar-xml', formData, {
             responseType: 'blob',
         });
     }

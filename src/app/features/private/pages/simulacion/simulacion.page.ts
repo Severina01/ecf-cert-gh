@@ -64,6 +64,7 @@ export class SimulacionPage implements OnInit {
     empresaNombre = '';
     tipoEcfVar = '';
     FechaVencimientoSecuencia = '';
+    ncfModificado = "";
 
 
 
@@ -1800,6 +1801,7 @@ export class SimulacionPage implements OnInit {
         const tipo = doc.querySelector('TipoeCF')?.textContent || '';
         this.tipoEcfVar = tipo;
         this.FechaVencimientoSecuencia = doc.querySelector('FechaVencimientoSecuencia')?.textContent || '';
+        this.ncfModificado = doc.querySelector('NCFModificado')?.textContent || "";
 
 
 

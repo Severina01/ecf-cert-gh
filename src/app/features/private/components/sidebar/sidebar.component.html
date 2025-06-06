@@ -10,15 +10,22 @@
   <!-- Lista de navegación con secciones -->
   <nav class="sidebar-nav">
     <div
-      *ngFor="let item of filteredSidebarMenu"
-      class="nav-link"
-      routerLinkActive="active"
+      *ngFor="let item of visibleSidebarMenu"
+      class="nav-link px-3 py-2 rounded mb-1 d-flex align-items-center"
       [routerLink]="['/private' + item.route]"
-      (click)="closeSidebar()"
+      routerLinkActive="active-link"
+      style="cursor: pointer"
     >
-      <div>
-        <i class="bi {{ item.icon }}"></i>
-        &nbsp;{{ item.name }}&nbsp;
+      <!-- Ícono con color dinámico -->
+      <i
+        class="bi {{ item.icon }} fs-5 me-3 icon-sidebar"
+        [ngStyle]="{ color: item.iconColor }"
+      ></i>
+
+      <!-- Texto centrado -->
+      <div class="d-flex flex-column justify-content-center">
+        <span class="fw-semibold text-title">{{ item.name }}</span>
+        <small class="text-subtitle">{{ item.subtitle }}</small>
       </div>
     </div>
   </nav>

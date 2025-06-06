@@ -4,9 +4,9 @@
       <div class="col">
         <h1>Prueba de Simulacion</h1>
       </div>
-      <div class="col-3">
+      <!-- <div class="col-3">
         <span
-          >Progreso: 0/44
+          >Progreso: {{contarEnviados(comprobantesAgrupados)}}/44
           <div
             class="progress"
             role="progressbar"
@@ -20,7 +20,7 @@
               style="width: 25%"
             ></div></div
         ></span>
-      </div>
+      </div> -->
     </div>
     <span class="text-muted">Paso 4 de la certificacion de la DGII</span>
   </div>
@@ -628,6 +628,12 @@
                 {{obtenerEncabezadoComprobante(tipoEcfVar,MontoTotal)}}
               </h5>
               <small><strong>e-CF:</strong> {{ ENCF }}</small><br />
+              <ng-container *ngIf="ncfModificado">
+                <small
+                  ><strong>NCF Modificado:</strong> {{ ncfModificado }}</small
+                ><br />
+              </ng-container>
+
               <small><strong>Fecha Emisión:</strong> {{ FechaEmision }}</small
               ><br />
               <small

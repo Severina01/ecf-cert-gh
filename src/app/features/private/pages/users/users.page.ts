@@ -152,7 +152,7 @@ export class UsersPage implements OnInit {
         // const q = query(coleccionRef, where('EmpresaID', '==', this.empresaId));
 
         collectionData(coleccionRef, { idField: 'id' }).subscribe((data) => {
-            this.empresaData = data;
+            this.empresaData = data.filter(doc => doc.id !== 'GB3msqPphwyGnNL5SD1Z');
         });
     }
 
@@ -161,7 +161,7 @@ export class UsersPage implements OnInit {
         // const q = query(coleccionRef, where('EmpresaID', '==', this.empresaId));
 
         collectionData(coleccionRef, { idField: 'id' }).subscribe((data) => {
-            this.usuariosData = data;
+            this.usuariosData = data.filter(doc => doc.id !== 'rmW9R6tvRJ8Y0r6O3vyP');
         });
     }
 

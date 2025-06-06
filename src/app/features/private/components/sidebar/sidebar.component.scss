@@ -141,6 +141,38 @@
   align-items: center;
 }
 
+.nav-link {
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #334155;
+}
+
+.active-link {
+  background-color: #334155 !important;
+  color: #38bdf8 !important;
+}
+
+.active-link .icon-sidebar {
+  color: #38bdf8 !important;
+}
+
+.icon-sidebar {
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.text-title {
+  font-size: 0.85rem;
+}
+
+.text-subtitle {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
 // .menu-item {
 //   width: 100%;
 //   padding: 10px 15px;
