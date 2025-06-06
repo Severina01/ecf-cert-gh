@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   // backendUrl: '/ecf/', // Ruta relativa a la API
-  backendUrl: 'http://localhost:3390/',
+  backendUrl: 'http://localhost:3390/ecf/',
   firebase: {
     apiKey: "AIzaSyDW4qeVifWDleFZFgKfK4XPLpzJS668egE",
     authDomain: "ecf-cert.firebaseapp.com",
