@@ -1808,10 +1808,14 @@ export class SimulacionPage implements OnInit {
         if (tipo === '32' && monto < 250000) {
             // Factura de consumo menor a 250 mil
             this.qrUrl = `https://fc.dgii.gov.do/CerteCF/ConsultaTimbreFC?RncEmisor=${this.RNCEmisor}&ENCF=${this.ENCF}&MontoTotal=${this.MontoTotal}&CodigoSeguridad=${this.CodigoSeguridad}`;
+        } else if (tipo === '47') {
+            // Comprobante para pagos al exterior (sin RNC del comprador)
+            this.qrUrl = `https://ecf.dgii.gov.do/CerteCF/ConsultaTimbre?RncEmisor=${this.RNCEmisor}&ENCF=${this.ENCF}&FechaEmision=${this.FechaEmision}&MontoTotal=${this.MontoTotal}&FechaFirma=${this.FechaFirma}&CodigoSeguridad=${this.CodigoSeguridad}`;
         } else {
             // Todos los demás casos
             this.qrUrl = `https://ecf.dgii.gov.do/CerteCF/ConsultaTimbre?RncEmisor=${this.RNCEmisor}&RncComprador=${this.RNCComprador}&ENCF=${this.ENCF}&FechaEmision=${this.FechaEmision}&MontoTotal=${this.MontoTotal}&FechaFirma=${this.FechaFirma}&CodigoSeguridad=${this.CodigoSeguridad}`;
         }
+
         this.productos = Array.from(doc.querySelectorAll('Item')).map((item: Element) => ({
             NumeroLinea: item.querySelector('NumeroLinea')?.textContent || '',
             NombreItem: item.querySelector('NombreItem')?.textContent || '',
@@ -1865,6 +1869,9 @@ export class SimulacionPage implements OnInit {
         const monto = parseFloat(montoTotal.replace(/,/g, '').trim());
 
         switch (tipoStr) {
+            case '31':
+                return 'FACTURA DE CRÉDITO FISCAL ELECTRÓNICA';
+
             case '32':
                 if (monto < 250000) {
                     return 'FACTURA DE CONSUMO ELECTRÓNICA';
@@ -1873,36 +1880,34 @@ export class SimulacionPage implements OnInit {
                 }
 
             case '33':
-                return 'FACTURA DE CRÉDITO FISCAL ELECTRÓNICA';
-
-            case '34':
-                return 'FACTURA DE REGÍMENES ESPECIALES ELECTRÓNICA';
-
-            case '41':
                 return 'NOTA DE DÉBITO ELECTRÓNICA';
 
-            case '43':
+            case '34':
                 return 'NOTA DE CRÉDITO ELECTRÓNICA';
 
+            case '41':
+                return 'COMPROBANTE ELECTRÓNICO DE COMPRAS';
+
+            case '43':
+                return 'COMPROBANTE ELECTRÓNICO PARA GASTOS MENORES';
+
             case '44':
-                return 'COMPROBANTE DE COMPRAS ELECTRÓNICO';
+                return 'COMPROBANTE ELECTRÓNICO PARA REGÍMENES ESPECIALES';
 
             case '45':
-                return 'GASTOS MENORES ELECTRÓNICO';
+                return 'COMPROBANTE ELECTRÓNICO GUBERNAMENTAL';
 
             case '46':
-                return 'GOBIERNO ELECTRÓNICO';
+                return 'COMPROBANTE ELECTRÓNICO PARA EXPORTACIONES';
 
             case '47':
-                return 'EXPORTACIÓN ELECTRÓNICA';
-
-            case '48':
-                return 'INGRESOS POR TERCEROS ELECTRÓNICO';
+                return 'COMPROBANTE ELECTRÓNICO PARA PAGOS AL EXTERIOR';
 
             default:
                 return 'COMPROBANTE ELECTRÓNICO';
         }
     }
+
 
 
 
