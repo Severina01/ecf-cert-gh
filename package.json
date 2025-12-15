@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@angular/service-worker": "^16.1.0",
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.49.4",
     "alertifyjs": "^1.14.0",

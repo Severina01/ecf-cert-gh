@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-lg bg-body border-bottom" [class.navbar-dark]="currentTheme === 'dark'" [class.navbar-light]="currentTheme !== 'dark'">
   <div class="container-fluid">
     <!-- Botón de toggle del sidebar - Solo visible en móvil -->
     <button
@@ -8,6 +8,11 @@
     >
       <i class="bi bi-list fs-4"></i>
     </button>
+
+    <!-- Nombre de la empresa -->
+    <span class="navbar-brand ms-2 mb-0 h6">
+      {{ companyName || 'Empresa' }}
+    </span>
 
     <!-- Botón de toggle del navbar (para el menú de navegación del AppBar) -->
     <!-- <button
@@ -32,9 +37,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="bi bi-gear"></i>
-          </a>
+          <button class="btn btn-link nav-link" (click)="toggleTheme()" aria-label="Toggle theme">
+            <i class="bi" [ngClass]="currentTheme === 'dark' ? 'bi-sun' : 'bi-moon'" title="Cambiar tema"></i>
+          </button>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -46,6 +51,7 @@
             <i class="bi bi-person-circle"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
+            <li><h6 class="dropdown-header">Usuario: {{ username || '—' }}</h6></li>
             <li><a class="dropdown-item" href="#">Perfil</a></li>
             <li><a class="dropdown-item" href="#">Configuración</a></li>
             <li><hr class="dropdown-divider" /></li>

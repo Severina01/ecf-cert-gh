@@ -580,8 +580,8 @@
             white-space: pre-wrap;
             max-height: 400px;
             overflow-y: auto;
-            background-color: black;
-            color: white;
+            background-color: var(--card-bg);
+            color: var(--text);
           "
         >
               <code [innerHTML]="xmlContent"></code>
@@ -598,10 +598,12 @@
   tabindex="-1"
   aria-labelledby="facturaModalLabel"
   aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
 >
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content bg-white text-dark">
+      <div class="modal-header bg-white text-dark">
         <h5 class="modal-title" id="facturaModalLabel">Factura Electrónica</h5>
         <button
           type="button"
@@ -610,61 +612,51 @@
           aria-label="Cerrar"
         ></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-white text-dark">
         <div
           id="facturaPDF"
           class="container p-4 bg-white text-dark border rounded"
         >
-          <div class="row">
-            <div class="col text-center">
-              <h3>{{empresaNombre}}</h3>
+          <!-- ENCABEZADO (DGII) -->
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="d-flex flex-column align-items-start">
+              <img [src]="empresaLogo" alt="Logo Empresa" style="height: 120px" />
+              <div class="mt-2">
+                <strong> {{ RazonSocialEmisor }}</strong><br />
+                <ng-container *ngIf="empresaDireccion">
+                  <small> {{ empresaDireccion }}</small><br />
+                </ng-container>
+                <small><strong>RNC:</strong> {{ RNCEmisor }}</small><br />
+                <ng-container *ngIf="puntoEmision">
+                  <small><strong>Punto de Emisión (Sucursal):</strong> {{ puntoEmision }}</small><br />
+                </ng-container>
+                <small><strong>Fecha Emisión:</strong> {{ FechaEmision }}</small>
+              </div>
             </div>
-          </div>
-          <!-- ENCABEZADO -->
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <img [src]="empresaLogo" alt="Logo Empresa" style="height: 120px" />
             <div class="text-end">
               <small class="mb-0" style="font-weight: bold; color: #234b7d">
-                {{obtenerEncabezadoComprobante(tipoEcfVar,MontoTotal)}}
+                {{ encabezadoComprobante }}
               </small>
               <br />
-              <small><strong>e-CF:</strong> {{ ENCF }}</small><br />
+              <small><strong>e-NCF:</strong> {{ ENCF }}</small><br />
               <ng-container *ngIf="ncfModificado">
-                <small
-                  ><strong>NCF Modificado:</strong> {{ ncfModificado }}</small
-                ><br />
+                <small><strong>NCF Modificado:</strong> {{ ncfModificado }}</small><br />
               </ng-container>
-
-              <small><strong>Fecha Emisión:</strong> {{ FechaEmision }}</small
-              ><br />
-              <small
-                ><strong>Fecha Vencimiento:</strong> {{
-                FechaVencimientoSecuencia }}</small
-              ><br />
+              <small *ngIf="FechaVencimientoSecuencia"><strong>Fecha Vencimiento:</strong> {{ FechaVencimientoSecuencia }}</small><br />
             </div>
           </div>
 
           <hr />
 
-          <!-- DATOS EMISOR Y COMPRADOR -->
+          <!-- DATOS DEL COMPRADOR -->
           <div class="row mb-4">
             <div class="col">
-              <h6>Datos del Emisor</h6>
-              <p class="mb-0"><strong>RNC:</strong> {{ RNCEmisor }}</p>
-              <p class="mb-0">
-                <strong>Nombre:</strong> {{ RazonSocialEmisor }}
-              </p>
-              <p class="mb-0">
-                <strong>Dirección:</strong> {{ DireccionEmisor }}
-              </p>
-            </div>
-            <div class="col">
               <h6>Datos del Comprador</h6>
+              <p class="mb-0">
+                <strong>Razon Social Cliente:</strong> {{ RazonSocialComprador }}
+              </p>
               <p class="mb-0" *ngIf="RNCComprador">
                 <strong>RNC:</strong> {{ RNCComprador }}
-              </p>
-              <p class="mb-0">
-                <strong>Nombre:</strong> {{ RazonSocialComprador }}
               </p>
               <p class="mb-0" *ngIf="DireccionComprador">
                 <strong>Dirección:</strong> {{ DireccionComprador }}
@@ -674,7 +666,7 @@
 
           <!-- TABLA DE PRODUCTOS -->
           <h6>Detalle de Productos</h6>
-          <table class="table table-bordered table-sm">
+          <table class="table table-bordered table-sm table-light">
             <thead class="table-warning">
               <tr>
                 <th>#</th>
@@ -699,13 +691,16 @@
           <div class="row mt-4">
             <div class="col-6">
               <div class="">
-                <qrcode [qrdata]="qrUrl" [width]="160"></qrcode>
+                <qrcode [qrdata]="qrUrl" [width]="160" [elementType]="'img'"></qrcode>
                 <p class="mt-2">
                   <strong>Código de Seguridad:</strong> {{ CodigoSeguridad }}
                 </p>
                 <p>
-                  <small><strong>Fecha Firma:</strong> {{ FechaFirma }}</small>
+                  <small><strong>Fecha de Firma Digital:</strong> {{ FechaFirma }}</small>
                 </p>
+                <!-- <p *ngIf="FechaVencimientoSecuencia">
+                  <small><strong>Fecha Vencimiento:</strong> {{ FechaVencimientoSecuencia }}</small>
+                </p> -->
               </div>
             </div>
             <div class="col-6 text-end">

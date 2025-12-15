@@ -9,6 +9,7 @@
     "paths": {
       "@env/*": ["src/environments/*"]
     },
+    "typeRoots": ["node_modules/@types", "src/types"],
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

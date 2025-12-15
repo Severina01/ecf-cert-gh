@@ -101,7 +101,7 @@
                 <tr *ngFor="let row of excelData">
                   <td>{{ row.CasoPrueba }}</td>
                   <td>
-                    <span class="badge bg-light text-dark border"
+                    <span class="badge bg-body-secondary text-body border"
                       >{{ row.TipoeCF }}</span
                     >
                   </td>
@@ -260,8 +260,8 @@
             white-space: pre-wrap;
             max-height: 400px;
             overflow-y: auto;
-            background-color: black;
-            color: white;
+            background-color: var(--card-bg);
+            color: var(--text);
           "
         >
             <code [innerHTML]="xmlContent"></code>

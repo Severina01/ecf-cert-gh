@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
+  // backendUrl: '', // Ruta relativa a la API
   backendUrl: '/ecf/', // Ruta relativa a la API
-  // backendUrl: 'http://localhost:3390/ecf/',
   firebase: {
-    apiKey: "AIzaSyDW4qeVifWDleFZFgKfK4XPLpzJS668egE",
-    authDomain: "ecf-cert.firebaseapp.com",
-    projectId: "ecf-cert",
-    storageBucket: "ecf-cert.firebasestorage.app",
-    messagingSenderId: "170320004110",
-    appId: "1:170320004110:web:2256e4ae1422d7b71fe85f"
-  }
+    apiKey: 'AIzaSyANqmnEtlQOIkJtvMqVcSk7PGniChEb954',
+    authDomain: 'gh-cert.firebaseapp.com',
+    projectId: 'gh-cert',
+    storageBucket: 'gh-cert.firebasestorage.app',
+    messagingSenderId: '705631966427',
+    appId: '1:705631966427:web:a35d5a673860fe93a628fe',
+  },
 };

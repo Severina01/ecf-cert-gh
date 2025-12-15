@@ -1,0 +1,89 @@
+{
+    "status": "success",
+    "code": 200,
+    "message": "Proceso de pruebas completado",
+    "data": {
+        "results": [
+            {
+                "scenario": {
+                    "IndicadorFacturacion[1]": "1",
+                    "CorreoComprador": "DOCUMENTOSELECTRONICOSDE0612345678969789@123.COM",
+                    "TipoeCF": "32",
+                    "MontoGravadoTotal": "34000.00",
+                    "IndicadorBienoServicio[2]": "1",
+                    "CantidadItem[2]": "1",
+                    "TotalITBIS1": "6120.00",
+                    "TipoIngresos": "01",
+                    "MunicipioComprador": "170203",
+                    "NombreItem[2]": "FREEZER",
+                    "CorreoEmisor": "DOCUMENTOSELECTRONICOS@123.COM",
+                    "CantidadItem[1]": "1",
+                    "RNCEmisor": "101788631",
+                    "PrecioUnitarioItem[1]": "5000.00",
+                    "TotalITBIS": "6120.00",
+                    "TelefonoAdicional": "809-472-7676",
+                    "CasoPrueba": "101788631E320000000233",
+                    "RazonSocialEmisor": "TODO HIERRO Y FERRETERIA S R L",
+                    "NombreItem[1]": "Cargador",
+                    "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                    "IndicadorMontoGravado": "0",
+                    "Version": "1.0",
+                    "TipoPago": "1",
+                    "MontoTotal": "40120.00",
+                    "NombreComercial": "DOCUMENTOS ELECTRONICOS",
+                    "TelefonoEmisor[1]": "809-472-7676",
+                    "NumeroLinea[2]": "2",
+                    "ProvinciaComprador": "170000",
+                    "FechaEmision": "01-04-2020",
+                    "MontoItem[2]": "29000.00",
+                    "IndicadorFacturacion[2]": "1",
+                    "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                    "UnidadMedida[2]": "23",
+                    "ENCF": "E320000000233",
+                    "InformacionAdicionalEmisor": "string",
+                    "MontoGravadoI1": "34000.00",
+                    "IndicadorBienoServicio[1]": "1",
+                    "RNCComprador": "131880681",
+                    "MontoItem[1]": "5000.00",
+                    "ITBIS1": "18",
+                    "DireccionComprador": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                    "PrecioUnitarioItem[2]": "29000.00",
+                    "NumeroLinea[1]": "1",
+                    "UnidadMedida[1]": "55",
+                    "id": "NOHMhDpc7RdNfrJFag06"
+                },
+                "status": "success",
+                "responseRFCE": {
+                    "dgiiResponse": {
+                        "codigo": 1,
+                        "estado": "Aceptado",
+                        "mensajes": null,
+                        "encf": "E320000000233",
+                        "secuenciaUtilizada": true
+                    },
+                    "xmlPublicUrl": "https://mruomgdwtutfwqxffgaj.supabase.co/storage/v1/object/public/uploads/RFCE/101788631E320000000233.xml",
+                    "codigoSeguridad": "ZLiw4h",
+                    "signatureValue": "ZLiw4hnELl1EvghUM1fQfqksWpI9/xJNbWVF92c8rCo0vHGfpSK7Edln8Kb4eBoB+w7zfBoFiX+E+RNS1/8dLPkNa9OD0jl24Z4+LPjgMDAJb3YvpJigKm7IlSDAujLxDXRRHwwTvOufiNUyBFaBU0XPgGJ7KzoRosTlXVoYzxV0X9IrqNygLSXGGES6fFCi/aKsejIn+8yuTwYq0SIhpgO9pzkQIQcBuQDmiydWeFM2AN52Rm9tIn7rGWkTQF6gsRw7eP0qzu/kqed4lFJzg+CucNpGp5DA8iiiJc7ntdIUPW+Z/dp18jGTMDXcmsyLy5jf1Y1N0yrt0UBA6foXuA==",
+                    "eNCF": "E320000000233",
+                    "rncEmisor": "101788631",
+                    "montoTotal": "40120.00",
+                    "tipoECF": "32",
+                    "qrUrl": "https://fc.dgii.gov.do/ecf/ConsultaTimbreFC?RncEmisor=101788631&ENCF=E320000000233&MontoTotal=40120.00&CodigoSeguridad=ZLiw4h"
+                },
+                "responseXML": {
+                    "message": "ECF firmado y guardado sin ser enviado",
+                    "xmlPublicUrl": "https://mruomgdwtutfwqxffgaj.supabase.co/storage/v1/object/public/uploads/ECF/101788631E320000000233.xml"
+                },
+                "ecfXmlSigned": "<?xml version=\"1.0\"?>\n<ECF><Encabezado><Version>1.0</Version><IdDoc><TipoeCF>32</TipoeCF><eNCF>E320000000233</eNCF><IndicadorMontoGravado>0</IndicadorMontoGravado><TipoIngresos>01</TipoIngresos><TipoPago>1</TipoPago></IdDoc><Emisor><RNCEmisor>101788631</RNCEmisor><RazonSocialEmisor>TODO HIERRO Y FERRETERIA S R L</RazonSocialEmisor><NombreComercial>DOCUMENTOS ELECTRONICOS</NombreComercial><DireccionEmisor>AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA</DireccionEmisor><TablaTelefonoEmisor><TelefonoEmisor>809-472-7676</TelefonoEmisor></TablaTelefonoEmisor><CorreoEmisor>DOCUMENTOSELECTRONICOS@123.COM</CorreoEmisor><InformacionAdicionalEmisor>string</InformacionAdicionalEmisor><FechaEmision>01-04-2020</FechaEmision></Emisor><Comprador><RNCComprador>131880681</RNCComprador><RazonSocialComprador>DOCUMENTOS ELECTRONICOS DE 03</RazonSocialComprador><CorreoComprador>DOCUMENTOSELECTRONICOSDE0612345678969789@123.COM</CorreoComprador><DireccionComprador>AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA</DireccionComprador><MunicipioComprador>170203</MunicipioComprador><ProvinciaComprador>170000</ProvinciaComprador><TelefonoAdicional>809-472-7676</TelefonoAdicional></Comprador><Totales><MontoGravadoTotal>34000.00</MontoGravadoTotal><MontoGravadoI1>34000.00</MontoGravadoI1><ITBIS1>18</ITBIS1><TotalITBIS>6120.00</TotalITBIS><TotalITBIS1>6120.00</TotalITBIS1><MontoTotal>40120.00</MontoTotal></Totales></Encabezado><DetallesItems><Item><NumeroLinea>1</NumeroLinea><IndicadorFacturacion>1</IndicadorFacturacion><NombreItem>Cargador</NombreItem><IndicadorBienoServicio>1</IndicadorBienoServicio><CantidadItem>1</CantidadItem><UnidadMedida>55</UnidadMedida><PrecioUnitarioItem>5000.00</PrecioUnitarioItem><MontoItem>5000.00</MontoItem></Item><Item><NumeroLinea>2</NumeroLinea><IndicadorFacturacion>1</IndicadorFacturacion><NombreItem>FREEZER</NombreItem><IndicadorBienoServicio>1</IndicadorBienoServicio><CantidadItem>1</CantidadItem><UnidadMedida>23</UnidadMedida><PrecioUnitarioItem>29000.00</PrecioUnitarioItem><MontoItem>29000.00</MontoItem></Item></DetallesItems><FechaHoraFirma>25-11-2025 13:58:08</FechaHoraFirma><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\"/><SignatureMethod Algorithm=\"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256\"/><Reference URI=\"\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\"/></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2001/04/xmlenc#sha256\"/><DigestValue>WpUM6B5lmc0VjrhWgNyn85Rt/Q/beMImjRMOVlcexQk=</DigestValue></Reference></SignedInfo><SignatureValue>EeZE3+FI57dNqxy7LlAk0Rmf9VbpFguH70zk7qEuvgjoTlcvBwoRbDhhKYJNWUgvMhRRN6yzt+tfnmZgdf5EBYjuP5rWesR9UruYinT9HYd/GLiLE2ygbsqnRgSpzIwaDpzXNuKoJNWFTXkwoTEeQDN6DBB5jEl7P3Zs6eGa+4E9AakKZfexk2lqEEXA4CzgIamne+E5rJsCfCNK/FTgTsEZWXG+tI87XgJhJ5bCYnUnncV8bxMUQJnZHgeuI64xNSDyYC3VORvQhzdaNj+oGGrQRibDM2SOSBEihp65Dq1MuUe/B63o5gxEnSyfN+qqofiWOThrFEo9pKCVmb4JOQ==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></ECF>\n",
+                "xmlECF": "<?xml version=\"1.0\"?>\n<ECF><Encabezado><Version>1.0</Version><IdDoc><TipoeCF>32</TipoeCF><eNCF>E320000000233</eNCF><IndicadorMontoGravado>0</IndicadorMontoGravado><TipoIngresos>01</TipoIngresos><TipoPago>1</TipoPago></IdDoc><Emisor><RNCEmisor>101788631</RNCEmisor><RazonSocialEmisor>TODO HIERRO Y FERRETERIA S R L</RazonSocialEmisor><NombreComercial>DOCUMENTOS ELECTRONICOS</NombreComercial><DireccionEmisor>AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA</DireccionEmisor><TablaTelefonoEmisor><TelefonoEmisor>809-472-7676</TelefonoEmisor></TablaTelefonoEmisor><CorreoEmisor>DOCUMENTOSELECTRONICOS@123.COM</CorreoEmisor><InformacionAdicionalEmisor>string</InformacionAdicionalEmisor><FechaEmision>01-04-2020</FechaEmision></Emisor><Comprador><RNCComprador>131880681</RNCComprador><RazonSocialComprador>DOCUMENTOS ELECTRONICOS DE 03</RazonSocialComprador><CorreoComprador>DOCUMENTOSELECTRONICOSDE0612345678969789@123.COM</CorreoComprador><DireccionComprador>AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA</DireccionComprador><MunicipioComprador>170203</MunicipioComprador><ProvinciaComprador>170000</ProvinciaComprador><TelefonoAdicional>809-472-7676</TelefonoAdicional></Comprador><Totales><MontoGravadoTotal>34000.00</MontoGravadoTotal><MontoGravadoI1>34000.00</MontoGravadoI1><ITBIS1>18</ITBIS1><TotalITBIS>6120.00</TotalITBIS><TotalITBIS1>6120.00</TotalITBIS1><MontoTotal>40120.00</MontoTotal></Totales></Encabezado><DetallesItems><Item><NumeroLinea>1</NumeroLinea><IndicadorFacturacion>1</IndicadorFacturacion><NombreItem>Cargador</NombreItem><IndicadorBienoServicio>1</IndicadorBienoServicio><CantidadItem>1</CantidadItem><UnidadMedida>55</UnidadMedida><PrecioUnitarioItem>5000.00</PrecioUnitarioItem><MontoItem>5000.00</MontoItem></Item><Item><NumeroLinea>2</NumeroLinea><IndicadorFacturacion>1</IndicadorFacturacion><NombreItem>FREEZER</NombreItem><IndicadorBienoServicio>1</IndicadorBienoServicio><CantidadItem>1</CantidadItem><UnidadMedida>23</UnidadMedida><PrecioUnitarioItem>29000.00</PrecioUnitarioItem><MontoItem>29000.00</MontoItem></Item></DetallesItems><FechaHoraFirma>25-11-2025 13:58:08</FechaHoraFirma><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\"/><SignatureMethod Algorithm=\"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256\"/><Reference URI=\"\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\"/></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2001/04/xmlenc#sha256\"/><DigestValue>WpUM6B5lmc0VjrhWgNyn85Rt/Q/beMImjRMOVlcexQk=</DigestValue></Reference></SignedInfo><SignatureValue>EeZE3+FI57dNqxy7LlAk0Rmf9VbpFguH70zk7qEuvgjoTlcvBwoRbDhhKYJNWUgvMhRRN6yzt+tfnmZgdf5EBYjuP5rWesR9UruYinT9HYd/GLiLE2ygbsqnRgSpzIwaDpzXNuKoJNWFTXkwoTEeQDN6DBB5jEl7P3Zs6eGa+4E9AakKZfexk2lqEEXA4CzgIamne+E5rJsCfCNK/FTgTsEZWXG+tI87XgJhJ5bCYnUnncV8bxMUQJnZHgeuI64xNSDyYC3VORvQhzdaNj+oGGrQRibDM2SOSBEihp65Dq1MuUe/B63o5gxEnSyfN+qqofiWOThrFEo9pKCVmb4JOQ==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIHYjCCBUqgAwIBAgIUboe7iHJ8wV/8dYzNxjvkoI0pDXAwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYTAkRPMREwDwYDVQQKDAhWSUFGSVJNQTEcMBoGA1UECwwTVklBRklSTUEgRE9NSU5JQ0FOQTEYMBYGA1UEBRMPVkFURE8tMTMwMjIyNTA5MSgwJgYDVQQDDB9WSUFGSVJNQSBRVUFMSUZJRUQgQ0VSVElGSUNBVEVTMB4XDTI1MDQyODEyNDk0M1oXDTI2MDQyODEyNDk0M1owgb8xCzAJBgNVBAYTAkRPMRswGQYDVQQEDBJGSUdVRVJPQSBST0RSSUdVRVoxDzANBgNVBCoMBlNJTUVPTjEaMBgGA1UEBRMRSURDRE8tMDA1MDAyMzIzNDMxIjAgBgNVBAMMGVNJTUVPTiBGSUdVRVJPQSBST0RSSUdVRVoxQjBABgNVBC4TOVFVQUxJRklFRCBDRVJUSUZJQ0FURSBGT1IgTkFUVVJBTCBQRVJTT04gLSBUQVggUFJPQ0VEVVJFUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJJi8fIElz0rCBzdxwKCuE+jeDL3YSZcWYX/hiouEkEzcO9a/G1B0FeVBnL2AYHxzh08kVnkuiH7gz0ZgFwXIZiKY4ozUVjh76VY1s/RsJ+yF48akkLON+6ARDWFPluSsj3qr24xYUVwRTIgOaXFhLkRz8LIORwwVdrl/9OgreUroRoM24n4lwcFCmPe+oe+0uNz2+p6txMUBHwLXuOifz15ZHCgNoyLmqSblQ0u9HlHARHdfx3w1qVJ55g+Tyd9IMcIt9Lm6QI1VzM04vsBvdxyaOCUS8zUNOgDuUtw+R+gnpzCc62suo3lgPyco325lWS0A4n8n65lTJEsvs9m12sCAwEAAaOCAo8wggKLMHkGCCsGAQUFBwEBBG0wazA8BggrBgEFBQcwAoYwaHR0cHM6Ly9jcHMudmlhZmlybWEuZG8vdmlhZmlybWFxdHNwc3ViY2EwMDguY3J0MCsGCCsGAQUFBzABhh9odHRwOi8vb2NzcC52aWFmaXJtYS5kby9vY3NwMDA4MB0GA1UdDgQWBBTso+v2plpslBefMGuBkMAexS+MajAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFEUCprq6fmFoNSUH7GlyeeeZl4eGMCIGCCsGAQUFBwEDBBYwFDAIBgYEAI5GAQEwCAYGBACORgEEMIHRBgNVHSAEgckwgcYwCQYHBACL7EABADCBuAYMKwYBBAGCi00HBBUAMIGnMCIGCCsGAQUFBwIBFhZodHRwOi8vY3BzLnZpYWZpcm1hLmRvMIGABggrBgEFBQcCAjB0HnIAUQBVAEEATABJAEYASQBFAEQAIABDAEUAUgBUAEkARgBJAEMAQQBUAEUAIABGAE8AUgAgAE4AQQBUAFUAUgBBAEwAIABQAEUAUgBTAE8ATgAgAC0AIABUAEEAWAAgAFAAUgBPAEMARQBEAFUAUgBFAFMweAYDVR0fBHEwbzA1oDOgMYYvaHR0cDovL2NybC52aWFmaXJtYS5kby92aWFmaXJtYXF0c3BzdWJjYTAwOC5jcmwwNqA0oDKGMGh0dHA6Ly9jcmwyLnZpYWZpcm1hLmRvL3ZpYWZpcm1hcXRzcHN1YmNhMDA4LmNybDAOBgNVHQ8BAf8EBAMCBeAwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMEMB8GA1UdEQQYMBaBFFNBTFRPUjAzQEhPVE1BSUwuQ09NMA0GCSqGSIb3DQEBCwUAA4ICAQCW5pusMsA5An2mJbFpnVRjQAZgD26KM3MvCk4fPWy9RIZC65VyyFdhU72+0k2SOrBBbwCoojRLRhWR8rJuZMhrRDkK8NEbunrv40cxb4aXO2QltWV+X0P1uVMwWzf5PA/SH3OXBbqwHV+z29h2yWWWoOIZywdPNs4NZy817Iv0czcGcwsSKq0hjkU3QU6HkuCLmlXRDhY+6Lu9peTL4IYtGTSLBvEbgLIg3XFP+hlUA2jq3ClWulztrvFLfHS/0PIomodrnqyVTvqDkAl3Q4flgRRKDGCMGINqrubRDPZMXxOQbJp/VOTWwtcJ16FnXyl2XhQHnffmZH25fgLKbPEqBZgTTgVMqbkWNxbJ0BQqRyaVf1pzn77Q/eUB4Pnh+Z4pbXKCNvOkZAUZyoCBr9HG42Frnk2o4UqvkgbV+LjyZ++sqLTbGwSwuHfpLMaztlC3PdE4W2zjbF5T7UJAsH+H5SNDNZR/zR+bJIhSWQnt/jWxNpOg6XMBCKjqhs2c0cfp7T5ibzwrUSMVg3Vsoj34OKXDzGidDSPI70WuOK5cFt3EtN2SCWEJ+EwVSBbpydm8u/DEebN8E6/89Gk1XAJq9101r2+waE6HmaxEQKwMTOdWxycT7LwTHDiHpcOf/6ZUvX2pcUab46bCag5n+VDQVQAezYj6vkJj+zjpIcpSbg==</X509Certificate></X509Data></KeyInfo></Signature></ECF>\n",
+                "xmlPublicUrl": "https://mruomgdwtutfwqxffgaj.supabase.co/storage/v1/object/public/uploads/ECF/101788631E320000000233.xml",
+                "xmlPublicUrlECF": "https://mruomgdwtutfwqxffgaj.supabase.co/storage/v1/object/public/uploads/ECF/101788631E320000000233.xml",
+                "xmlPublicUrlRFCE": "https://mruomgdwtutfwqxffgaj.supabase.co/storage/v1/object/public/uploads/RFCE/101788631E320000000233.xml",
+                "meta": {
+                    "certOnlyRFCE": true
+                }
+            }
+        ]
+    }
+}
+

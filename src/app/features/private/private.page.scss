@@ -43,7 +43,8 @@
   padding: 20px;
   margin-top: 64px; // Altura del navbar
   min-height: calc(100vh - 64px);
-  background-color: #fafafa;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 // Overlay para cerrar el sidebar en móvil

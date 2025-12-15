@@ -9,16 +9,19 @@
   <div class="row">
     <div class="col">
       <h1>Dashboard</h1>
-      <span class="text-muted"
-        >Bienvenido al sistema de certificación electrónica</span
-      >
+      <span class="text-muted">Bienvenido al sistema de certificación electrónica</span>
+      <p class="mt-2 text-muted">
+        Esta herramienta certificadora de la DGII le permite cargar y gestionar e-CF,
+        configurar su certificado digital, simular envíos a la DGII y firmar XML.
+        Use los accesos rápidos abajo para empezar.
+      </p>
     </div>
   </div>
   <br />
   <div class="row">
-    <div class="col-12 col-sm-4 h-100">
+    <div class="col-12 col-md-6 h-100">
       <div
-        class="card py-4 px-3 h-100"
+        class="card py-4 px-3 h-100 bg-body text-body"
         [routerLink]="['/private/certificaciones']"
       >
         <div class="row">
@@ -34,24 +37,17 @@
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col">
-            <h6>Aceptados</h6>
-            <h4 class="text-success">{{aceptados}}</h4>
-          </div>
-          <div class="col">
-            <h6>Pendientes</h6>
-            <h4 class="text-warning">{{pendientes}}</h4>
-          </div>
-          <div class="col">
-            <h6>Rechazados</h6>
-            <h4 class="text-danger">{{rechazados}}</h4>
+          <div class="col-12">
+            <p class="text-sm text-muted mb-0">
+              Gestione certificaciones: filtros, búsqueda y detalle por estado.
+            </p>
           </div>
         </div>
         <br />
       </div>
     </div>
-    <div class="col-12 col-sm-4 h-100">
-      <div class="card py-4 px-3" [routerLink]="['/private/settings']">
+    <div class="col-12 col-md-6 h-100">
+      <div class="card py-4 px-3 bg-body text-body" [routerLink]="['/private/settings']">
         <div class="row">
           <div class="col">
             <h4><i class="bi bi-gear"></i> Configuración</h4>
@@ -72,23 +68,46 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-sm-4 h-100">
-      <div class="card py-4 px-3" [routerLink]="['/private/pos']">
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-12 col-md-6 h-100">
+      <div class="card py-4 px-3 bg-body text-body" [routerLink]="['/private/simulacion']">
         <div class="row">
           <div class="col">
-            <h4><i class="bi bi-basket2"></i> Mini POS</h4>
+            <h4><i class="bi bi-graph-up-arrow"></i> Simulación DGII</h4>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <span class="text-muted">Facturación de ventas</span>
+            <span class="text-muted">Pruebe datos e-CF y simulación con DGII</span>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-12">
             <p class="text-sm">
-              Genere comprobantes y gestione sus ventas electrónicas de manera
-              rápida y segura.
+              Genere casos de prueba y valide la respuesta de la DGII antes de enviar a producción.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 h-100">
+      <div class="card py-4 px-3 bg-body text-body" [routerLink]="['/private/firma']">
+        <div class="row">
+          <div class="col">
+            <h4><i class="bi bi-file-earmark-lock"></i> Firmar XML</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span class="text-muted">Firme comprobantes con su certificado</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p class="text-sm">
+              Cargue XMLs, aplique firma electrónica y prepare sus e-CF para envío.
             </p>
           </div>
         </div>
@@ -98,29 +117,35 @@
   <br />
   <div class="row">
     <div class="col-12 col-sm-6">
-      <div class="card p-4">
+      <div class="card p-4 bg-body text-body">
         <div class="row">
           <div class="col">
-            <h4><i class="bi bi-receipt"></i> Estado del sistema</h4>
+            <h4><i class="bi bi-speedometer2"></i> Resumen del sistema</h4>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <span class="text-muted"
-              >Información sobre el estado del sistema</span
-            >
+            <span class="text-muted">Indicadores clave y configuración</span>
           </div>
         </div>
         <br />
-        <div class="row">
+        <div class="alert alert-secondary bg-body-secondary text-body" role="alert">
+          Monitoree su configuración y conexión. Los detalles por estado están en
+          <a [routerLink]="['/private/certificaciones']" class="alert-link">Certificaciones</a>.
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="row align-items-center">
           <div class="col">
-            <h6>Conexión DGIII</h6>
+            <h6>Conexión DGII</h6>
           </div>
           <div class="col text-end">
             <span class="badge bg-success-subtle text-success">Activa</span>
           </div>
         </div>
-        <div class="row">
+
+        <div class="row align-items-center">
           <div class="col">
             <h6>RNC</h6>
           </div>
@@ -128,14 +153,14 @@
             <span
               class="badge"
               [ngClass]="{
-              'bg-success-subtle text-success': datasEmpresa[0].rnc  !== '',
-              'bg-danger-subtle text-danger': datasEmpresa[0].rnc  === '',
-            }"
-              >{{datasEmpresa[0].rnc ? 'Configurado' : 'No configurado'}}</span
-            >
+                'bg-success-subtle text-success': datasEmpresa[0]?.rnc,
+                'bg-danger-subtle text-danger': !datasEmpresa[0]?.rnc
+              }"
+            >{{ datasEmpresa[0]?.rnc ? 'Configurado' : 'No configurado' }}</span>
           </div>
         </div>
-        <div class="row">
+
+        <div class="row align-items-center">
           <div class="col">
             <h6>Certificado</h6>
           </div>
@@ -143,12 +168,10 @@
             <span
               class="badge"
               [ngClass]="{
-              'bg-success-subtle text-success': datasEmpresa[0].certificadoUrl  !== '',
-              'bg-danger-subtle text-danger': datasEmpresa[0].certificadoUrl  === '',
-            }"
-              >{{datasEmpresa[0].certificadoUrl ? 'Configurado' : 'No
-              configurado'}}</span
-            >
+                'bg-success-subtle text-success': datasEmpresa[0]?.certificadoUrl,
+                'bg-danger-subtle text-danger': !datasEmpresa[0]?.certificadoUrl
+              }"
+            >{{ datasEmpresa[0]?.certificadoUrl ? 'Configurado' : 'No configurado' }}</span>
           </div>
         </div>
       </div>

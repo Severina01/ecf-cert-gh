@@ -6,7 +6,7 @@
   right: 0;
   left: 0;
   z-index: 1020;
-  background-color: white;
+  background-color: var(--appbar-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   // En escritorio, el navbar debe dejar espacio para el sidebar

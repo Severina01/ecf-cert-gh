@@ -1,0 +1,74 @@
+/* Forzar fondo claro en el modal de factura y el contenedor del PDF */
+#facturaModal .modal-content,
+#facturaModal .modal-header,
+#facturaModal .modal-body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+#facturaPDF,
+#facturaPDF_clone {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  /* Forzar tabla clara dentro del contenedor del PDF */
+  table {
+    --bs-table-bg: #ffffff !important;
+    --bs-table-color: #000000 !important;
+    --bs-table-striped-bg: #f8f9fa !important;
+    --bs-table-striped-color: #000000 !important;
+    --bs-table-border-color: #dee2e6 !important;
+  }
+}
+
+/* Asegurar que el botón de cierre del modal sea visible en fondo claro */
+#facturaModal .btn-close,
+.modal-header .btn-close {
+  --bs-btn-close-color: #000000 !important;
+  filter: none !important;
+  opacity: 0.75;
+}
+
+#facturaModal .btn-close:hover,
+.modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+/* Ajustes responsive para móvil */
+@media (max-width: 576px) {
+  #facturaModal .modal-dialog {
+    max-width: 100% !important;
+    margin: 0.5rem !important;
+  }
+
+#facturaPDF,
+#facturaPDF_clone {
+    padding: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+
+  #facturaPDF img,
+  #facturaPDF_clone img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  #facturaPDF .table,
+  #facturaPDF_clone .table {
+    font-size: 12px !important;
+  }
+
+  #facturaPDF th,
+  #facturaPDF td,
+  #facturaPDF_clone th,
+  #facturaPDF_clone td {
+    padding: 0.25rem 0.4rem !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  #facturaPDF .text-nowrap,
+  #facturaPDF_clone .text-nowrap {
+    white-space: normal !important;
+  }
+}

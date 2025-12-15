@@ -1,4 +1,4 @@
-import { Component, OnInit, } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 declare var $: any;
 import {
   Firestore,
@@ -8,17 +8,14 @@ import {
   query,
   where,
   doc,
-  updateDoc
+  updateDoc,
 } from '@angular/fire/firestore';
-
 
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-
-
 export class DashboardPage implements OnInit {
   empresaID = '';
   dataOriginal: any[] = [];
@@ -26,19 +23,11 @@ export class DashboardPage implements OnInit {
   aceptados = 0;
   rechazados = 0;
   pendientes = 0;
+  total = 0;
+  tasaAceptacion = 0;
   isLoading = true;
 
-
-
-  constructor(
-    private firestore: Firestore,
-  ) {
-  }
-
-
-
-
-
+  constructor(private firestore: Firestore) {}
 
   ngOnInit(): void {
     this.empresaID = localStorage.getItem('empresaId')!;
@@ -53,9 +42,19 @@ export class DashboardPage implements OnInit {
     collectionData(q, { idField: 'id' }).subscribe((data) => {
       this.dataOriginal = data;
       console.log(this.dataOriginal);
-      this.aceptados = data.filter((item) => item['estatus'] === 'Aceptado').length;
-      this.rechazados = data.filter((item) => item['estatus'] === 'Rechazado').length;
-      this.pendientes = data.filter((item) => item['estatus'] === 'Pendiente').length;
+      this.aceptados = data.filter(
+        (item) => item['estatus'] === 'Aceptado'
+      ).length;
+      this.rechazados = data.filter(
+        (item) => item['estatus'] === 'Rechazado'
+      ).length;
+      this.pendientes = data.filter(
+        (item) => item['estatus'] === 'Pendiente'
+      ).length;
+      this.total = data.length;
+      this.tasaAceptacion = this.total
+        ? Math.round((this.aceptados / this.total) * 100)
+        : 0;
     });
   }
 
@@ -73,10 +72,4 @@ export class DashboardPage implements OnInit {
       this.isLoading = false;
     });
   }
-
-
-
-
-
 }
-
